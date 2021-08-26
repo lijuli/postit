@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Latest updates{% endblock %}
+{% block header %}Latest updates{% endblock %}
+{% block content %}
+
+    <main role="main" class="container">
+        <div class="row">
+                {% include "include/profile_info.html" with author=author %}
+            <div class="col-md-9">
+                {% include "include/post_item.html" with post=post %}
+
+                <form method="post" action="{% url 'add_comment' post.author.username post.id %}">
+                    {% include "include/comments.html" %}
+                </form>
+
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
